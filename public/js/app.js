@@ -49218,6 +49218,29 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(document).ready(function () {
+  // alert('test_page');
+  $.ajax({
+    url: 'http://localhost:8000/api/index',
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer Xk9VR9kiattqsOCOtDUmv66YizxqOmBvu5uIOXGw543aFXDbYoJEGNWnqN9Z'
+    },
+    success: function success(data) {
+      //console.log(result);
+      var movies = data.result; //console.log(movies);
+
+      for (var i = 0; i < movies.length; i++) {
+        //console.log(movies[i]);
+        var movie = movies[i];
+        $('.movies').append('<li>' + movie.title + ' - ' + movie.director + '</li>');
+      }
+    },
+    error: function error() {
+      'error';
+    }
+  });
+});
 
 /***/ }),
 
